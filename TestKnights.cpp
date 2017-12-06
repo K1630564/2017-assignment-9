@@ -11,6 +11,7 @@ using std::cout;
 using std::endl;
 
 int main() {
+    /*
     for (int dim = 1; dim <= 8; ++dim) {
         cout << "Looking for tour on a " << dim << " x " << dim << " board\n";
         auto tour = first_tour(dim, Path{{0,0}});
@@ -29,4 +30,5 @@ int main() {
             }
         }
     }
+     */
 }
