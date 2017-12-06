@@ -13,6 +13,8 @@
 using std::pair;
 using std::make_pair;
 using std::vector;
+using std::endl;
+using std::cout;
 
 typedef vector<pair<int,int> > Path;
 
@@ -75,19 +77,35 @@ vector<pair<int, int> > legal_moves(int boardSize, Path path, pair<int, int> cur
 
     if(is_legal(boardSize, path, allMoves[0])){legalMoves.push_back(allMoves[0]);}
 
-    if(is_legal(boardSize, path, allMoves[1])){legalMoves.push_back(allMoves[0]);}
+    if(is_legal(boardSize, path, allMoves[1])){legalMoves.push_back(allMoves[1]);}
 
-    if(is_legal(boardSize, path, allMoves[2])){legalMoves.push_back(allMoves[0]);}
+    if(is_legal(boardSize, path, allMoves[2])){legalMoves.push_back(allMoves[2]);}
 
-    if(is_legal(boardSize, path, allMoves[3])){legalMoves.push_back(allMoves[0]);}
+    if(is_legal(boardSize, path, allMoves[3])){legalMoves.push_back(allMoves[3]);}
 
-    if(is_legal(boardSize, path, allMoves[4])){legalMoves.push_back(allMoves[0]);}
+    if(is_legal(boardSize, path, allMoves[4])){legalMoves.push_back(allMoves[4]);}
 
-    if(is_legal(boardSize, path, allMoves[5])){legalMoves.push_back(allMoves[0]);}
+    if(is_legal(boardSize, path, allMoves[5])){legalMoves.push_back(allMoves[5]);}
 
-    if(is_legal(boardSize, path, allMoves[6])){legalMoves.push_back(allMoves[0]);}
+    if(is_legal(boardSize, path, allMoves[6])){legalMoves.push_back(allMoves[6]);}
 
-    if(is_legal(boardSize, path, allMoves[7])){legalMoves.push_back(allMoves[0]);}
+    if(is_legal(boardSize, path, allMoves[7])){legalMoves.push_back(allMoves[7]);}
+
+    cout << legalMoves[0].first << endl;
+    cout << legalMoves[0].second << endl;
+    cout << " " << endl;
+    cout << legalMoves[1].first << endl;
+    cout << legalMoves[1].second << endl;
+    cout << " " << endl;
+    cout << legalMoves[2].first << endl;
+    cout << legalMoves[2].second << endl;
+    cout << " " << endl;
+    cout << legalMoves[3].first << endl;
+    cout << legalMoves[3].second << endl;
+    cout << " " << endl;
+    cout << legalMoves[4].first << endl;
+    cout << legalMoves[4].second << endl;
+    cout << " " << endl;
 
     return legalMoves;
 
