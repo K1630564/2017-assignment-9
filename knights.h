@@ -16,6 +16,7 @@ using std::make_pair;
 using std::vector;
 using std::endl;
 using std::cout;
+using std::sort;
 
 typedef vector<pair<int,int> > Path;
 int number = 0;
@@ -102,8 +103,6 @@ vector<pair<int, int> > legal_moves(int boardSize, Path path, pair<int, int> cur
 
 pair<Path, bool> first_tour(int boardSize, Path path){
 
-// sorta legalMoves så att den som har flest onward moves ligger först, kalla på legal moves för varje i listan
-
 
     pair<int, int> next_move;
 
@@ -111,37 +110,48 @@ pair<Path, bool> first_tour(int boardSize, Path path){
 
     vector<pair<int, int> > lMoves = legal_moves(boardSize, path, currentPos);
 
-
+    vector<pair<int, int> > sMoves;
 
     if(path.size() == boardSize*boardSize){
-
 
         return make_pair(path, true);
     }
 
-    for(int i = 0; i < lMoves.size(); i++) {
-        number++;
-        int random_variable = rand() % 100 + 1;
-        next_move = make_pair(lMoves[i].first, lMoves[i].second);
+
+    int smallest = 10000;
+
+    for(int j = 0; j < lMoves.size(); j++){
+
+        vector<pair<int, int> > temp0 = path;
+        temp0.push_back(lMoves[j]);
+
+        vector<pair<int, int> > temp = legal_moves(boardSize, temp0, lMoves[j]);
+        int temp2 = temp.size();
+
+        if(temp2 < smallest){
+
+            sMoves.insert(sMoves.begin(), lMoves[j]);
+
+            smallest = temp2;
+        }
+        else{
+            sMoves.push_back(lMoves[j]);
+        }
+
+    }
+
+    for(int i = 0; i < sMoves.size(); i++) {
+        next_move = make_pair(sMoves[i].first, sMoves[i].second);
         Path temp = path;
         temp.push_back(next_move);
-
-
 
         pair<Path, bool> search = first_tour(boardSize, temp);
 
         if (search.second == true) {
             return make_pair(search.first, true);
-        } else {
         }
-
     }
-
-
-
     return make_pair(path, false);
-
-
 };
 
 
