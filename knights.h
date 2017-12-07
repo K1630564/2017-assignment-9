@@ -9,7 +9,6 @@
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>
-#include <ctime>
 
 // Do not add any extra #includes without asking on the KEATS discussion forum
 
@@ -105,7 +104,7 @@ vector<pair<int, int> > legal_moves(int boardSize, Path path, pair<int, int> cur
 
 pair<Path, bool> first_tour(int boardSize, Path path){
 
-
+// sorta legalMoves så att den som har flest onward moves ligger först, kalla på legal moves för varje i listan
 
 
     pair<int, int> next_move;
