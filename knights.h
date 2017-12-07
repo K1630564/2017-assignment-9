@@ -124,13 +124,10 @@ pair<Path, bool> first_tour(int boardSize, Path path){
 
     for(int i = 0; i < lMoves.size(); i++) {
         number++;
-     //   cout << number << endl;
         int random_variable = rand() % 100 + 1;
-    //    cout << "ID: " << random_variable << endl;
         next_move = make_pair(lMoves[i].first, lMoves[i].second);
         Path temp = path;
         temp.push_back(next_move);
-       // path.insert(path.end(), next_move);
 
 
 
