@@ -7,8 +7,12 @@
 #include <numeric>
 #include <iostream>
 #include <cstdint>
+#include <cstdlib>
+#include <iostream>
+#include <ctime>
 
 // Do not add any extra #includes without asking on the KEATS discussion forum
+
 
 using std::pair;
 using std::make_pair;
@@ -17,6 +21,7 @@ using std::endl;
 using std::cout;
 
 typedef vector<pair<int,int> > Path;
+int number = 0;
 
 /** Helper function: adds two pairs of ints */
 pair<int,int> operator+(const pair<int,int> & a, const pair<int,int> & b) {
@@ -53,6 +58,7 @@ bool is_legal (int boardSize, Path path, pair<int, int> currentPos){
         return false;
     }
     else if (currentPos.first > boardSize - 1){
+
         return false;
     }
     else if(currentPos.second > boardSize - 1){
@@ -100,40 +106,43 @@ vector<pair<int, int> > legal_moves(int boardSize, Path path, pair<int, int> cur
 pair<Path, bool> first_tour(int boardSize, Path path){
 
 
+
+
     pair<int, int> next_move;
 
-    pair<int, int> currentPos = path.front();
+    pair<int, int> currentPos = path.back();
 
     vector<pair<int, int> > lMoves = legal_moves(boardSize, path, currentPos);
 
 
+
     if(path.size() == boardSize*boardSize){
+
+
         return make_pair(path, true);
     }
 
-    for(int i = 0; i < boardSize; i++){
-
-        if(!lMoves.empty()){
-
-            next_move = make_pair(lMoves[i].first, lMoves[i].second);
-
-
-            path.insert(path.begin(), next_move);
-
-            if(first_tour(boardSize, path) == make_pair(path, true)){
-                return make_pair(path, true);
-            }
-            else{
-                path.erase(path.begin());
-            }
+    for(int i = 0; i < lMoves.size(); i++) {
+        number++;
+     //   cout << number << endl;
+        int random_variable = rand() % 100 + 1;
+    //    cout << "ID: " << random_variable << endl;
+        next_move = make_pair(lMoves[i].first, lMoves[i].second);
+        Path temp = path;
+        temp.push_back(next_move);
+       // path.insert(path.end(), next_move);
 
 
 
+        pair<Path, bool> search = first_tour(boardSize, temp);
 
-
+        if (search.second == true) {
+            return make_pair(search.first, true);
+        } else {
         }
 
     }
+
 
 
     return make_pair(path, false);
