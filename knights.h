@@ -6,9 +6,7 @@
 #include <algorithm>
 #include <numeric>
 #include <iostream>
-#include <cstdint>
-#include <cstdlib>
-#include <iostream>
+
 
 // Do not add any extra #includes without asking on the KEATS discussion forum
 
