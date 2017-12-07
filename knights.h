@@ -91,26 +91,56 @@ vector<pair<int, int> > legal_moves(int boardSize, Path path, pair<int, int> cur
 
     if(is_legal(boardSize, path, allMoves[7])){legalMoves.push_back(allMoves[7]);}
 
-    cout << legalMoves[0].first << endl;
-    cout << legalMoves[0].second << endl;
-    cout << " " << endl;
-    cout << legalMoves[1].first << endl;
-    cout << legalMoves[1].second << endl;
-    cout << " " << endl;
-    cout << legalMoves[2].first << endl;
-    cout << legalMoves[2].second << endl;
-    cout << " " << endl;
-    cout << legalMoves[3].first << endl;
-    cout << legalMoves[3].second << endl;
-    cout << " " << endl;
-    cout << legalMoves[4].first << endl;
-    cout << legalMoves[4].second << endl;
-    cout << " " << endl;
 
     return legalMoves;
 
 
 };
+
+pair<Path, bool> first_tour(int boardSize, Path path){
+
+
+    pair<int, int> next_move;
+
+    pair<int, int> currentPos = path.front();
+
+    vector<pair<int, int> > lMoves = legal_moves(boardSize, path, currentPos);
+
+
+    if(path.size() == boardSize*boardSize){
+        return make_pair(path, true);
+    }
+
+    for(int i = 0; i < boardSize; i++){
+
+        if(!lMoves.empty()){
+
+            next_move = make_pair(lMoves[i].first, lMoves[i].second);
+
+
+            path.insert(path.begin(), next_move);
+
+            if(first_tour(boardSize, path) == make_pair(path, true)){
+                return make_pair(path, true);
+            }
+            else{
+                path.erase(path.begin());
+            }
+
+
+
+
+
+        }
+
+    }
+
+
+    return make_pair(path, false);
+
+
+};
+
 
 
 
