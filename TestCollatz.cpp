@@ -30,7 +30,8 @@ int main() {
             cout << "Does collatz(9) return 20?  No, it returns " << ans << "\n";        
         }
     }
-    
+    /*
+
     vector<int> bounds{10,100,1000,10000,100000,1000000};
     vector<pair<uint64_t, uint64_t> > answers{
         {20, 9     },
@@ -54,4 +55,5 @@ int main() {
         cout << "{" << answers[i].first << ", " << answers[i].second << "}\n";
     }
 
+*/
 }
