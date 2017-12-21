@@ -14,17 +14,15 @@ using std::accumulate;
 
 template<typename T>
 
-int bestProfit (T start , T end){
+int bestProfit (T const start , T const end){
 
-    int startPrice = * start;
+    int toReturn = accumulate(start, end, 0, [start](int priceDifference, int price){
 
-    int toReturn = accumulate(start, end, 0, [&startPrice](int priceDifference, int & price){
-
-        int temp = price - startPrice;
+        int temp = price - * start;
 
         if((temp) > priceDifference) priceDifference = temp;
 
-        if(price < startPrice) startPrice = price;
+        if(price < * start) * start = price;
 
         return priceDifference;
     });
